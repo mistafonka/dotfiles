@@ -1,0 +1,149 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 34,
+  "margin": "8 12 0 12",
+  "spacing": 8,
+
+  "modules-left": [
+    "hyprland/workspaces",
+    "mpris"
+  ],
+
+  "modules-center": [
+    "clock"
+  ],
+
+  "modules-right": [
+    "pulseaudio",
+    "network",
+    "battery",
+    "cpu",
+    "memory",
+    "tray"
+  ],
+
+  "clock": {
+    "format": "  {:%I:%M %p}",
+    "tooltip-format": "<span size='14pt'><b>{:%A, %B %d, %Y}</b></span>\n\n<span size='12pt'>{calendar}</span>",
+
+    "calendar": {
+      "mode": "month",
+      "mode-mon-col": 3,
+      "weeks-pos": "right",
+      "on-scroll": 1,
+
+      "format": {
+        "months": "<span color='#4da3ff'><b>{}</b></span>",
+        "days": "<span color='#e6e6e6'>{}</span>",
+        "weeks": "<span color='#666666'><b>W{}</b></span>",
+        "weekdays": "<span color='#ffcc33'><b>{}</b></span>",
+        "today": "<span color='#ff4d4d'><b>{}</b></span>"
+      }
+    },
+
+    "actions": {
+      "on-click-right": "mode",
+      "on-scroll-up": "tz_up",
+      "on-scroll-down": "tz_down"
+    }
+  },
+
+  "hyprland/workspaces": {
+    "disable-scroll": true,
+    "all-outputs": true,
+    "show-special": false,
+    "format": "{icon}",
+
+    "persistent-workspaces": {
+      "*": 9
+    },
+
+    "format-icons": {
+      "active": "•",
+      "default": "•",
+      "empty": "•"
+    }
+  },
+
+  "pulseaudio": {
+    "scroll-step": 5,
+    "format": "{icon}  {volume}%",
+    "format-muted": "󰝟 muted",
+
+    "format-icons": {
+      "default": [
+        "",
+        "",
+        ""
+      ]
+    },
+
+    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+    "on-click-right": "pwvucontrol",
+
+    "tooltip-format": "󰕾 Output Volume: {volume}%\n󰍬 Right click: Open mixer\n󰖀 Scroll: Adjust volume"
+  },
+
+  "network": {
+    "format-wifi": "󰖩  {signalStrength}%",
+    "format-ethernet": "󰈀 ethernet",
+    "format-disconnected": "󰖪 offline",
+
+    "tooltip-format-wifi": "󰖩  {essid}\n󰛳  IP: {ipaddr}\n󰩟  Gateway: {gwaddr}\n󰤨  Signal: {signalStrength}%\n󰑓  Frequency: {frequency} GHz",
+
+    "tooltip-format-ethernet": "󰈀 Ethernet Connected\n󰛳 IP: {ipaddr}\n󰩟 Gateway: {gwaddr}",
+
+    "tooltip-format-disconnected": "󰖪 No Network Connection"
+  },
+
+  "battery": {
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
+
+    "format": "{icon}  {capacity}%",
+    "format-charging": "󰂄  {capacity}%",
+    "format-plugged": "󰂄  {capacity}%",
+    "format-full": "󰁹  {capacity}%",
+
+    "tooltip-format": "󰁹 Battery: {capacity}%\n󱐋 Remaining: {time}",
+
+    "format-icons": [
+      "󰁺",
+      "󰁻",
+      "󰁼",
+      "󰁽",
+      "󰁾",
+      "󰁿",
+      "󰂀",
+      "󰂁",
+      "󰂂",
+      "󰁹"
+    ]
+  },
+
+  "cpu": {
+    "interval": 2,
+    "format": "  {usage}%",
+    "tooltip-format": " CPU Usage\n{usage}% utilized"
+  },
+
+  "memory": {
+    "interval": 2,
+    "format": "󰍛  {}%",
+    "tooltip-format": "󰍛 RAM Usage\n{}% used"
+  },
+
+  "tray": {
+    "spacing": 12
+  },
+
+  "mpris": {
+    "format": "  {title}",
+    "format-paused": "  {title}",
+    "max-length": 35,
+    "tooltip-format": "{title}\n{artist}"
+  }
+}

@@ -1,0 +1,186 @@
+@define-color bg rgba(0, 0, 0, 0.82);
+@define-color fg #e6e6e6;
+
+@define-color blue #4da3ff;
+@define-color red #ff4d4d;
+@define-color yellow #ffcc33;
+@define-color green #33d6a6;
+
+@define-color inactive #666666;
+
+@define-color widget_border rgba(210, 235, 255, 0.35);
+@define-color widget_border_hover #d8f2ff;
+
+* {
+    font-family: "CaskaydiaCove Nerd Font";
+    font-size: 14px;
+    font-weight: 700;
+
+    border: none;
+    border-radius: 0;
+
+    min-height: 0;
+
+    margin: 0;
+    padding: 0;
+
+    transition: border-color 180ms ease;
+}
+
+window#waybar {
+    background: transparent;
+    color: @fg;
+}
+
+#workspaces,
+#clock,
+#pulseaudio,
+#network,
+#battery,
+#cpu,
+#memory,
+#tray,
+#mpris {
+    background: @bg;
+    border: 1px solid @widget_border;
+    border-radius: 16px;
+    padding: 5px 14px;
+    box-shadow: none;
+}
+
+#workspaces:hover,
+#clock:hover,
+#pulseaudio:hover,
+#network:hover,
+#battery:hover,
+#cpu:hover,
+#memory:hover,
+#tray:hover,
+#mpris:hover {
+    background: @bg;
+    border: 1px solid @widget_border_hover;
+    box-shadow: none;
+}
+
+#clock {
+    color: @fg;
+    padding-left: 18px;
+    padding-right: 18px;
+}
+
+#workspaces {
+    padding: 3px 10px;
+}
+
+#workspaces button {
+    background: transparent;
+    color: rgba(255, 255, 255, 0.12);
+
+    margin: 0 2px;
+    padding: 0 3px;
+
+    min-width: 16px;
+    font-size: 22px;
+
+    box-shadow: none;
+}
+
+#workspaces button.empty {
+    color: rgba(255, 255, 255, 0.08);
+}
+
+#workspaces button.visible {
+    color: rgba(255, 255, 255, 0.35);
+}
+
+#workspaces button.active {
+    color: #84d2ff;
+    text-shadow: none;
+}
+
+#workspaces button:hover {
+    color: white;
+    background: transparent;
+}
+
+#network {
+    color: #84d2ff;
+}
+
+#battery {
+    color: @fg;
+}
+
+#battery.warning {
+    color: @yellow;
+}
+
+#battery.critical {
+    color: @red;
+}
+
+#pulseaudio.muted {
+    color: @red;
+}
+
+#mpris.paused {
+    color: @inactive;
+}
+
+#tray {
+    padding-left: 10px;
+    padding-right: 10px;
+    min-height: 24px;
+}
+
+#tray > * {
+    margin: 0 2px;
+    padding: 0;
+}
+
+#tray > .passive {
+    opacity: 0.75;
+}
+
+#tray image {
+    -gtk-icon-transform: scale(1);
+}
+
+tooltip {
+    background: rgba(0, 0, 0, 0.95);
+    border: 1px solid @widget_border;
+    border-radius: 14px;
+    box-shadow: none;
+}
+
+tooltip label {
+    color: @fg;
+    padding: 10px 14px;
+    font-size: 13px;
+}
+
+tooltip calendar {
+    background: transparent;
+    color: @fg;
+}
+
+tooltip calendar:selected {
+    background: rgba(132, 210, 255, 0.18);
+    border-radius: 8px;
+}
+
+tooltip calendar.header {
+    color: #84d2ff;
+}
+
+tooltip calendar.button {
+    color: #84d2ff;
+}
+
+tooltip calendar.highlight {
+    color: @red;
+}
+
+tooltip calendar:indeterminate {
+    color: rgba(255, 255, 255, 0.25);
+}
