@@ -1,0 +1,16 @@
+#!/bin/bash
+PIDFILE="/tmp/autoclick.pid"
+if [[ -f "$PIDFILE" ]] && kill -0 "$(cat "$PIDFILE")" 2>/dev/null; then
+    kill "$(cat "$PIDFILE")"
+    rm -f "$PIDFILE"
+    notify-send "Auto Clicker" "Disabled"
+    exit 0
+fi
+(
+    while true; do
+        echo "click left" | dotool
+        sleep 0.05
+    done
+) &
+echo $! > "$PIDFILE"
+notify-send "Auto Clicker" "Enabled"

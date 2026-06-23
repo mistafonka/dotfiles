@@ -1,0 +1,27 @@
+#!/bin/bash
+
+DIR="$HOME/ScreenRecordings"
+mkdir -p "$DIR"
+
+PIDFILE="/tmp/wf-recorder.pid"
+
+if [ -f "$PIDFILE" ] && kill -0 "$(cat "$PIDFILE")" 2>/dev/null; then
+    kill -INT "$(cat "$PIDFILE")"
+    rm -f "$PIDFILE"
+    exit 0
+fi
+
+END_TIME=$(date +"%Y-%m-%d_%H-%M-%S")
+FILE="$DIR/${END_TIME}.mp4"
+
+notify-send "Screen Recorder" "Recording started"
+
+wf-recorder -f "$FILE" &
+PID=$!
+
+echo "$PID" > "$PIDFILE"
+
+wait "$PID"
+
+notify-send "Screen Recorder" "Saved $(basename "$FILE")"
+rm -f "$PIDFILE"
