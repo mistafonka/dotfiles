@@ -16,7 +16,7 @@ FILE="$DIR/${END_TIME}.mp4"
 
 notify-send "Screen Recorder" "Recording started"
 
-wf-recorder -f "$FILE" &
+wf-recorder --audio -f "$FILE" &
 PID=$!
 
 echo "$PID" > "$PIDFILE"
