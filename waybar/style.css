@@ -8,11 +8,11 @@
 
 @define-color inactive #666666;
 
-@define-color widget_border rgba(210, 235, 255, 0.35);
-@define-color widget_border_hover #d8f2ff;
+@define-color widget_border rgba(255, 255, 255, 0.25);
+@define-color widget_border_hover #ffffff;
 
 * {
-    font-family: "CaskaydiaCove Nerd Font";
+    font-family: "FiraCode Nerd Font Mono";
     font-size: 14px;
     font-weight: 700;
 
@@ -48,22 +48,8 @@ window#waybar {
     box-shadow: none;
 }
 
-#workspaces:hover,
-#clock:hover,
-#pulseaudio:hover,
-#network:hover,
-#battery:hover,
-#cpu:hover,
-#memory:hover,
-#tray:hover,
-#mpris:hover {
-    background: @bg;
-    border: 1px solid @widget_border_hover;
-    box-shadow: none;
-}
-
 #clock {
-    color: @fg;
+    color: #e6e6e6;
     padding-left: 18px;
     padding-right: 18px;
 }
@@ -75,13 +61,10 @@ window#waybar {
 #workspaces button {
     background: transparent;
     color: rgba(255, 255, 255, 0.12);
-
     margin: 0 2px;
     padding: 0 3px;
-
     min-width: 16px;
     font-size: 22px;
-
     box-shadow: none;
 }
 
@@ -94,37 +77,49 @@ window#waybar {
 }
 
 #workspaces button.active {
-    color: #84d2ff;
-    text-shadow: none;
+    color: #ffffff;
 }
 
 #workspaces button:hover {
-    color: white;
+    color: inherit;
     background: transparent;
 }
 
 #network {
-    color: #84d2ff;
+    color: #4da3ff;
+}
+
+#cpu {
+    color: #ff8c42;
+}
+
+#memory {
+    color: #9b7bff;
+}
+
+#pulseaudio {
+    color: #ff5fa2;
+}
+
+#mpris {
+    color: #777777;
 }
 
 #battery {
-    color: @fg;
+    color: #33d6a6;
+}
+
+#battery.full,
+#battery.good {
+    color: #00ff88;
 }
 
 #battery.warning {
-    color: @yellow;
+    color: #ffcc33;
 }
 
 #battery.critical {
-    color: @red;
-}
-
-#pulseaudio.muted {
-    color: @red;
-}
-
-#mpris.paused {
-    color: @inactive;
+    color: #ff4d4d;
 }
 
 #tray {
@@ -146,6 +141,20 @@ window#waybar {
     -gtk-icon-transform: scale(1);
 }
 
+#workspaces:hover,
+#clock:hover,
+#pulseaudio:hover,
+#network:hover,
+#battery:hover,
+#cpu:hover,
+#memory:hover,
+#tray:hover,
+#mpris:hover {
+    background: @bg;
+    border: 1px solid @widget_border_hover;
+    box-shadow: none;
+}
+
 tooltip {
     background: rgba(0, 0, 0, 0.95);
     border: 1px solid @widget_border;
@@ -154,9 +163,9 @@ tooltip {
 }
 
 tooltip label {
-    color: @fg;
     padding: 10px 14px;
     font-size: 13px;
+    color: @fg;
 }
 
 tooltip calendar {
@@ -178,7 +187,7 @@ tooltip calendar.button {
 }
 
 tooltip calendar.highlight {
-    color: @red;
+    color: #ff4d4d;
 }
 
 tooltip calendar:indeterminate {
